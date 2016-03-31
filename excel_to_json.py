@@ -7,9 +7,8 @@
 #                           param 2: file path of output directory.  
 #
 #
-# Description: This module contains one method called parse_to_json that will parse the PowerUp
-#              spreadsheet of online resources to valid json. Json is the 
-#              format used for data transfer to openEd's API. There is a loop that indexes
+# Description: This module contains one method called parse_to_json that will parse a .xls or .xlsx file 
+#              to valid json. Json is the  There is a loop that indexes
 #              the excel file and places each data row into an individual OrderedDictionary
 #              object. Those OrderedDictionaries are then appended to a list. The list is passed
 #              into the json encoder.
