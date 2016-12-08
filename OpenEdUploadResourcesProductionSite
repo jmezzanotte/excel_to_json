@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Written by: 			John Mezzanotte
-# Email: 				jmezzanotte@air.org
+# Email: 				
 # Date-created: 		4/30/15
 # Date-last-Modified: 	5/5/15
 # Project: 				Powerupwhatworks.org 
@@ -38,19 +38,19 @@
 # 						I have tracked all the ids in a file called
 #							"PowerUp Materials to OpenEd API_FINAL_TRACKER.xlsx"
 #			
-# API_ENDPOINT (Production site): https://api.opened.io/resources/add.json
+# API_ENDPOINT (Production site): <Removed>
 # 
-# Contact at opened: 		Leonid Morozov
-# 							leonid@opened.io
+# Contact at opened: 		
+# 						
 
 
 curl --include \
      --request POST \
      --header "Content-Type: application/json" \
-     --header "Authorization: Bearer 4f6935072723b247358f82b0036f9ead44428fcce884e49aa6a8fa9f36a215ff" \
+     --header "<removed>"
      --data-binary  '{
         "title": "Tech Research Brief: Writing for the Web: Blogs and Wikis to Support Literacy", 
-        "url": "http://powerupwhatworks.org/sites/default/files/Writing%20for%20the%20Web%20to%20Support%20Literacy.pdf", 
+        "url": "http://<removed details>.pdf", 
         "description": "Writing online, through blogs, wikis, or discussion forums, can boost student motivation for writing and help students learn to adapt writing for different audiences, tasks, purposes, and disciplines. How is writing a well-researched page for Wikipedia different from writing a personal blog? These writing skills, and learning to use media in a variety of situations, are critical parts of helping your students meet the College and Career Readiness Standards for Reading,\u00a0Writing,(link is external)\u00a0and\u00a0Speaking and Listening.", 
         "standard_idents": [
             ""
