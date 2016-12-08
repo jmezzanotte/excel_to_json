@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# Written by: 			John Mezzanotte
+# Email: 				jmezzanotte@air.org
+# Date-created: 		4/30/15
+# Date-last-Modified: 	5/5/15
+# Project: 				Powerupwhatworks.org 
+# Purpose: 				Upload resources from powerupwhatworks.org to openEd.io 
+#						through their API. We must load resources 10 at a time, then 
+# 						wait 10 seconds and send in another 10. THIS SCRIPT IS FOR UPLOADING TO 
+# 						THE PRODUCTION SITE. 
+#
+# Use of Script: 		The script is currently set up to send 1 json object to the OpenEd
+#						API at a time. Input the json object as a parameter for "data-binary"
+# 						
+#						Suggestion for modification
+# 						Ideally this script loop through all the json objects in the json 
+# 						file and upload batches of 10 separate by a ten second delay. I wasn't 
+# 						able to do that in this script. 
+#
+# JSON Source file: 	powerup_add_FINAL.json
+#						This file was parsed via a python script called powerup_parser.py
+#				
+# Notes: 				The API will not accept Subject area as a parameter. I had 
+# 						to drop that from the JSON. 
+#
+#						make sure to escape all single quotes in the json object. For example, 
+# 							john's --> john'\''s
+#
+# 						You can access the production site at http://opened.io. My credentials 
+# 						are jmezzanotte@air.org, password: finish_upload22. From here you can search 
+# 						for resources by searching PowerUp WHAT WORKS,  or you can pass the 
+# 						upload id as a query parameter to the url, for example: 
+#							http://opened.io/resources/1102127 
+# 						
+# 						The the upload ( or resource id) will be returned as a json object upon successful
+# 						upload to the site ( it will have the key "id". For this round of uploads
+# 						I have tracked all the ids in a file called
+#							"PowerUp Materials to OpenEd API_FINAL_TRACKER.xlsx"
+#			
+# API_ENDPOINT (Production site): https://api.opened.io/resources/add.json
+# 
+# Contact at opened: 		Leonid Morozov
+# 							leonid@opened.io
+
+
+curl --include \
+     --request POST \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer 4f6935072723b247358f82b0036f9ead44428fcce884e49aa6a8fa9f36a215ff" \
+     --data-binary  '{
+        "title": "Tech Research Brief: Writing for the Web: Blogs and Wikis to Support Literacy", 
+        "url": "http://powerupwhatworks.org/sites/default/files/Writing%20for%20the%20Web%20to%20Support%20Literacy.pdf", 
+        "description": "Writing online, through blogs, wikis, or discussion forums, can boost student motivation for writing and help students learn to adapt writing for different audiences, tasks, purposes, and disciplines. How is writing a well-researched page for Wikipedia different from writing a personal blog? These writing skills, and learning to use media in a variety of situations, are critical parts of helping your students meet the College and Career Readiness Standards for Reading,\u00a0Writing,(link is external)\u00a0and\u00a0Speaking and Listening.", 
+        "standard_idents": [
+            ""
+        ], 
+        "grades_range": "", 
+        "contribution_name": "PowerUp WHAT WORKS", 
+        "resource_type": "Other"
+    }'  \
+     'https://api.opened.io/resources/add.json' >> OpenEdUploadProductionSiteLog.txt
